@@ -60,7 +60,7 @@ def parseParam():
 def parseSimpleParam():
 	argvs = sys.argv  # コマンドライン引数を格納したリストの取得
 	freq = int(float(argvs[1]))
-	length = float(argvs[2]) / 1000
+	length = float(argvs[2])
 	return [{ 'freq' : freq, 'length' : length }]
 
 def main():
@@ -69,7 +69,7 @@ def main():
 		print 'Usage: # python %s -f freq -l millisec -n -f freq2 -l millisec2...' % sys.argv[0]
 		quit();
 
-	if ( sys.argv == 3 ):
+	if ( len(sys.argv) == 3 ):
 		beepList = parseSimpleParam()
 	else:
 		beepList = parseParam()
