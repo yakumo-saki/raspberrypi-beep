@@ -5,9 +5,14 @@ beep for raspberry-pi (GPIO)
 install WiringPi  
 http://wiringpi.com/
 
-Build & install WiringPi2-Python  
+Build & install WiringPi-Python  
 https://github.com/WiringPi/WiringPi-Python
 
-# Qiita
-セットアップ方法、解説等は以下をご参照下さい。  
-http://qiita.com/yakumo/items/80d06cb38aa43912ef77 (Japanese language)
+## setup example
+
+On Raspberry Pi OS (aka Raspbian)
+
+```
+apt install wiringpi python3-pip
+pip3 install -r requirements.txt
+```
