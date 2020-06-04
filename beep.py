@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import RPi.GPIO as GPIO
 from time import sleep
-import wiringpi2 as wiringpi
+import wiringpi
 
 from pprint import pprint 
 import sys
@@ -10,7 +10,7 @@ outpin = 13  # WireingPiのBCM番号で指定
 
 def tone(freq, length):
 	ms = float(length) / 1000
-	print 'freq %d length %f sec' % (freq, ms)
+	print('freq %d length %f sec' % (freq, ms))
 	wiringpi.softToneWrite(outpin, freq)
 	sleep(ms)
 	wiringpi.softToneWrite(outpin, 0)
@@ -65,8 +65,8 @@ def parseSimpleParam():
 
 def main():
 	if ( len(sys.argv) < 3 ):
-		print 'Usage: # python %s freq millisecond' % sys.argv[0]
-		print 'Usage: # python %s -f freq -l millisec -n -f freq2 -l millisec2...' % sys.argv[0]
+		print('Usage: # python %s freq millisecond' % sys.argv[0])
+		print('Usage: # python %s -f freq -l millisec -n -f freq2 -l millisec2...' % sys.argv[0])
 		quit();
 
 	if ( len(sys.argv) == 3 ):
@@ -75,7 +75,7 @@ def main():
 		beepList = parseParam()
 
 	if ( len(beepList) == 0 ):
-		print 'Usage: # python %s -f freq -l millisec -n -f freq2 -l millisec2...' % sys.argv[0]
+		print('Usage: # python %s -f freq -l millisec -n -f freq2 -l millisec2...' % sys.argv[0])
 		quit()
 
 	## sounding 
@@ -88,7 +88,7 @@ def main():
 	for beep in beepList:
 		if (beep['freq'] == 0):
 			length = float(beep['length']) / 1000
-			print "Wait %f ms" % length
+			print("Wait %f ms" % length)
 			sleep(length)
 		else:
 			tone(beep['freq'], beep['length'])
